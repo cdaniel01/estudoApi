@@ -4,10 +4,7 @@ import br.edu.ufam.estudoapi.domain.Usuario;
 import br.edu.ufam.estudoapi.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +25,11 @@ public class UsuarioController {
     public ResponseEntity<List<Usuario>> findAll(){
         List<Usuario> usuarioList = usuarioService.findAll();
         return ResponseEntity.ok().body(usuarioList);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Usuario> update(@PathVariable Integer id, @RequestBody Usuario usuario){
+        Usuario obj = usuarioService.update(id, usuario);
+        return ResponseEntity.ok().body(obj);
     }
 }
