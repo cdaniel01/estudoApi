@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/usuarios")
 public class UsuarioController {
@@ -20,5 +22,11 @@ public class UsuarioController {
 
         Usuario usuario = usuarioService.findById(id);
         return ResponseEntity.ok().body(usuario);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Usuario>> findAll(){
+        List<Usuario> usuarioList = usuarioService.findAll();
+        return ResponseEntity.ok().body(usuarioList);
     }
 }
