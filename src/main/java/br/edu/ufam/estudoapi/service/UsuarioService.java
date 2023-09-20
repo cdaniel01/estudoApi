@@ -31,4 +31,11 @@ public class UsuarioService {
 
         return usuarioRepository.save(obj);
     }
+
+    public Usuario create(Usuario usuario) {
+        usuario.setId(null);
+
+        return usuarioRepository.save(usuario);
+
+    }
 }
